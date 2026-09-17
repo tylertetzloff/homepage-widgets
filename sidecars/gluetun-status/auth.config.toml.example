@@ -1,0 +1,13 @@
+# Bind-mount onto the Gluetun container as /gluetun/auth/config.toml
+# Replace the apikey with `docker run --rm qmcgaw/gluetun genkey`
+# and set the same value on gluetun-status as GLUETUN_API_KEY.
+
+[[roles]]
+name = "homepage"
+routes = [
+  "GET /v1/publicip/ip",
+  "GET /v1/portforward",
+  "GET /v1/openvpn/portforwarded",
+]
+auth = "apikey"
+apikey = "replace-me"

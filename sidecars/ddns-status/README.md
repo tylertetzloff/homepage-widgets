@@ -32,6 +32,10 @@ WAN IP uses `https://api.ipify.org` unless `SKIP_IPIFY=1`. That is the only outb
 
 Merge the `ddns-status` service from [`../compose.fragment.yml`](../compose.fragment.yml). Bind-mount the host path onto `MOUNT_PATH`.
 
-Homepage snippet: [`../../homepage/services.mounts.yaml`](../../homepage/services.mounts.yaml).
+## Homepage
+
+Follow [Add these widgets to Homepage](../../homepage/README.md). Paste [`../../homepage/services.mounts.yaml`](../../homepage/services.mounts.yaml) under an `Infra` group in `config/services.yaml`.
+
+`widget.url: http://ddns-status:8791/mounts.json` is fetched by Homepage, so they must share a Docker network.
 
 Optional: [`../../homepage/custom.js`](../../homepage/custom.js) rewrites the Mounts pill to CONNECTED / DOWN.

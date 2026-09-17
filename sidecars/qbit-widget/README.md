@@ -24,7 +24,9 @@ Open `http://HOMEPAGE_HOST:8788/?embed=1` to confirm the list loads.
 
 ## Homepage
 
-Merge [`../../homepage/services.qbit.yaml`](../../homepage/services.qbit.yaml) into `services.yaml`. Replace `HOMEPAGE_HOST` with the host you already use in the browser for Homepage (not the qBittorrent LAN IP).
+Follow [Add these widgets to Homepage](../../homepage/README.md). Paste [`../../homepage/services.qbit.yaml`](../../homepage/services.qbit.yaml) under a group in `config/services.yaml` (example group name: `Downloads`).
+
+Replace `HOMEPAGE_HOST` with the host you already use in the browser for Homepage (not the qBittorrent LAN IP).
 
 The iframe `src` must be the **widget** (`:8788`), not qBittorrent itself. `href` can still point at the Web UI.
 
@@ -37,6 +39,8 @@ layout:
     columns: 1
     fullWidth: true
 ```
+
+Then `docker restart homepage` and hard-refresh the browser.
 
 ## What not to commit
 

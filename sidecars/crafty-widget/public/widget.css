@@ -1,0 +1,48 @@
+:root {
+  --bg: #1b2433;
+  --elev: #243044;
+  --subtle: #1a2332;
+  --fg: #f4f7fb;
+  --muted: #9aa8bc;
+  --dim: #7b8799;
+  --ok: #8fbf9a;
+  --warn: #c4a574;
+  --bad: #d08080;
+  --border: rgba(244, 247, 251, 0.08);
+}
+* { box-sizing: border-box; }
+html, body {
+  margin: 0; min-height: 100%; width: 100%; height: 100%;
+  background: var(--bg); color: var(--fg);
+  font: 15px/1.45 "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+}
+html.embed .title { display: none; }
+.page { max-width: 1100px; margin: 0 auto; padding: 8px; }
+.title { margin: 0 0 12px 4px; font-size: 18px; font-weight: 500; }
+.card { background: var(--elev); border-radius: 12px; padding: 12px 16px; }
+.head { display: flex; align-items: center; gap: 12px; padding: 4px; margin-bottom: 12px; }
+.mark { width: 40px; height: 40px; border-radius: 8px; flex: none; }
+.name { font-weight: 500; }
+.sub { color: var(--muted); font-size: 12px; }
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.well {
+  min-height: 64px; background: var(--subtle); border-radius: 8px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px 8px;
+}
+.well .n { font-size: 0.875rem; font-variant-numeric: tabular-nums; }
+.well .l { margin-top: 8px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+.tone-ok { color: var(--ok); }
+.tone-bad { color: var(--bad); }
+.tone-warn { color: var(--warn); }
+.list { margin-top: 12px; background: var(--subtle); border-radius: 8px; overflow: hidden; }
+.empty { padding: 32px 16px; text-align: center; color: var(--muted); }
+.row { padding: 12px 16px; }
+.row + .row { border-top: 1px solid var(--border); }
+.row-title { display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; }
+.row-title p { margin: 0; font-size: 14px; font-weight: 500; }
+.st { font-family: ui-monospace, monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; }
+.nums { margin-top: 6px; display: flex; flex-wrap: wrap; gap: 4px 12px;
+  font-family: ui-monospace, monospace; font-size: 12px; font-variant-numeric: tabular-nums; color: var(--dim); }
+.who { margin: 8px 0 0; color: var(--muted); font-size: 12px; }
+.who b { color: var(--fg); font-weight: 500; }
+.err { padding: 16px; color: var(--bad); font-size: 13px; }

@@ -1,8 +1,10 @@
 # homepage-widgets
 
-Custom [Homepage](https://gethomepage.dev) cards and one iframe widget for a home-lab dashboard.
+Custom [Homepage](https://gethomepage.dev) cards and iframe widgets for a home-lab dashboard.
 
-Nothing secret belongs here. NAS username/password stay in `ugreen.auth` on the server (gitignored). Do not commit LAN IPs, cookies, or tokens.
+**Start here:** [Add these widgets to Homepage](homepage/README.md) — where to paste YAML, Docker network, `custom.js`, layout.
+
+Nothing secret belongs here. NAS username/password stay in `ugreen.auth` on the server (gitignored). Crafty API tokens and Gluetun keys stay in gitignored files too. Do not commit LAN IPs, cookies, instance names, or tokens.
 
 ## Cards
 
@@ -12,18 +14,23 @@ Nothing secret belongs here. NAS username/password stay in `ugreen.auth` on the 
 | **uGreen** | Homepage `customapi` | `ugreen-api` | Homepage → `ugreen-api:9199` |
 | **Mounts** | Homepage `customapi` | `ddns-status` | Homepage → `ddns-status:8791/mounts.json` |
 | **DDNS** | Homepage `customapi` | same `ddns-status` | Homepage → `ddns-status:8791/ddns.json` |
+| **Gluetun** | Homepage `customapi` | `gluetun-status` | Homepage → `gluetun-status:8792/` |
+| **Crafty / Minecraft** | iframe widget | `crafty-widget` | widget origin only (`/api/summary` → Crafty from the sidecar) |
 
-Status pills for uGreen / Mounts are rewritten by [`homepage/custom.js`](homepage/custom.js), which only calls Homepage's own `/api/services/proxy`.
+Status pills for uGreen / Mounts / Gluetun are rewritten by [`homepage/custom.js`](homepage/custom.js), which only calls Homepage's own `/api/services/proxy`.
 
 ## Tutorials
 
-1. [qBittorrent iframe](sidecars/qbit-widget/README.md)
-2. [uGreen NAS temps](sidecars/ugreen-api/README.md)
-3. [Mounts + DDNS](sidecars/ddns-status/README.md)
+1. [Add to Homepage](homepage/README.md)
+2. [qBittorrent iframe](sidecars/qbit-widget/README.md)
+3. [uGreen NAS temps](sidecars/ugreen-api/README.md)
+4. [Mounts + DDNS](sidecars/ddns-status/README.md)
+5. [Gluetun VPN](sidecars/gluetun-status/README.md)
+6. [Crafty Minecraft](sidecars/crafty-widget/README.md)
 
 Compose fragments to merge into an existing stack: [`sidecars/compose.fragment.yml`](sidecars/compose.fragment.yml).
 
-Homepage YAML snippets: [`homepage/`](homepage/).
+Homepage YAML snippets: [`homepage/`](homepage/). Full example: [`homepage/services.example.yaml`](homepage/services.example.yaml).
 
 ## Shared prerequisites
 
@@ -42,12 +49,13 @@ The group name in `custom.js` (`Infra`) must match the group title in `services.
 
 ## Security checklist
 
-- [x] No LAN IPs in defaults (`NAS_HOST` / `HOMEPAGE_HOST` placeholders only)
-- [x] No passwords or UGOS tokens in git
+- [x] No LAN IPs in defaults (`NAS_HOST` / `HOMEPAGE_HOST` / `GAME_HOST` placeholders only)
+- [x] No passwords, UGOS tokens, Crafty tokens, or Gluetun keys in git
 - [x] qBit widget uses empty `QBIT_USER` / `QBIT_PASS` and same-origin `/api/v2`
-- [x] `ugreen.auth`, `*.token`, and `.env` are gitignored
+- [x] Crafty iframe uses same-origin `/api/summary` (token stays in the sidecar)
+- [x] `ugreen.auth`, `*.token`, `crafty.token`, and `.env` are gitignored
 - [ ] On your server: whitelist the Docker subnet in qBittorrent instead of baking credentials into HTML
-- [ ] On your server: set `UGOS_URL` and bind-mounts; never push those values back here
+- [ ] On your server: set `UGOS_URL`, `CRAFTY_URL`, bind-mounts; never push those values back here
 
 ## Health thresholds (uGreen)
 

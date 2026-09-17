@@ -1,0 +1,15 @@
+# Standalone example. Prefer merging into the stack that already
+# runs Homepage + Crafty so they share a Docker network.
+services:
+  crafty-widget:
+    build: .
+    container_name: crafty-widget
+    restart: unless-stopped
+    environment:
+      CRAFTY_URL: https://crafty:8443
+      CRAFTY_TOKEN_FILE: /run/crafty.token
+      PORT: "8789"
+    volumes:
+      - ./crafty.token:/run/crafty.token:ro
+    ports:
+      - "8789:8789"

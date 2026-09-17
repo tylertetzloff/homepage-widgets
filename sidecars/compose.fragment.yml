@@ -1,6 +1,6 @@
 # Snippets only — merge into the stack that already runs Homepage.
-# Keep these on the same Docker network as Homepage (and qBittorrent).
-# Do not commit ugreen.auth, ugreen.token, or a filled-in .env.
+# Keep these on the same Docker network as Homepage (and qBittorrent / Crafty / Gluetun).
+# Do not commit ugreen.auth, crafty.token, or a filled-in .env.
 
   ugreen-api:
     image: python:3.12-slim
@@ -28,3 +28,28 @@
     volumes:
       - ./sidecars/ddns-status/ddns-status-http.py:/app.py:ro
       - /mnt/storage:/mnt/storage:ro
+
+  gluetun-status:
+    image: python:3-alpine
+    container_name: gluetun-status
+    restart: unless-stopped
+    environment:
+      GLUETUN_URL: http://gluetun:8000
+      GLUETUN_API_KEY: ""
+      PORT: "8792"
+    command: python -u /app.py
+    volumes:
+      - ./sidecars/gluetun-status/gluetun-status.py:/app.py:ro
+
+  crafty-widget:
+    build: ./sidecars/crafty-widget
+    container_name: crafty-widget
+    restart: unless-stopped
+    environment:
+      CRAFTY_URL: https://crafty:8443
+      CRAFTY_TOKEN_FILE: /run/crafty.token
+      PORT: "8789"
+    volumes:
+      - ./sidecars/crafty-widget/crafty.token:/run/crafty.token:ro
+    ports:
+      - "8789:8789"

@@ -1,0 +1,22 @@
+# Merge under a Games (or similar) group in services.yaml.
+#
+# Expanded iframe (player list, CPU/RAM, every Crafty instance).
+# Browser talks to crafty-widget only — Crafty API token never leaves the sidecar.
+    - Crafty:
+        icon: https://docs.craftycontrol.com/img/favicon.ico
+        href: https://HOMEPAGE_HOST:8443
+        widget:
+          type: iframe
+          name: crafty
+          src: http://HOMEPAGE_HOST:8789/?embed=1
+          classes: h-80 lg:h-[28rem]
+          allowScrolling: yes
+
+# Optional: Homepage's built-in Minecraft query (no Crafty token).
+# Replace GAME_HOST with the Java edition bind address. Example names only.
+#   - Minecraft:
+#       icon: minecraft.png
+#       href: https://HOMEPAGE_HOST:8443
+#       widget:
+#         type: minecraft
+#         url: udp://GAME_HOST:25565

@@ -5,6 +5,7 @@
 ugreen.auth
 ugreen.token
 ugreen.token_uid
+crafty.token
 *.auth
 *.token
 __pycache__/

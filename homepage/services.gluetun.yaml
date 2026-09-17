@@ -1,0 +1,22 @@
+# Merge under an Infra (or similar) group in services.yaml.
+# customapi url is fetched by the Homepage container — Docker DNS, not a LAN IP.
+    - Gluetun:
+        id: gluetun
+        icon: gluetun.png
+        href: http://HOMEPAGE_HOST:8000
+        description: VPN exit
+        server: my-docker
+        container: gluetun-status
+        widget:
+          type: customapi
+          url: http://gluetun-status:8792/
+          refreshInterval: 30000
+          mappings:
+            - field: country
+              label: country
+            - field: region
+              label: region
+            - field: public_ip
+              label: IP
+            - field: port_forwarded
+              label: fwd

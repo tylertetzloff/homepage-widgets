@@ -14,6 +14,14 @@
         return s;
       },
       good: ["connected", "mounted", "up"], warn: [] },
+    { id: "gluetun", title: "Gluetun", service: "Gluetun", fallback: "Connected",
+      pick: (j) => {
+        const s = (j.health || j.status || j.data?.health || j.data?.status || "").toString();
+        if (/^(up|ok|connected)$/i.test(s)) return "Connected";
+        if (/^(down|error)$/i.test(s)) return "Down";
+        return s || "Connected";
+      },
+      good: ["connected", "up"], warn: [] },
   ];
   const cache = {};
   let busy = false;

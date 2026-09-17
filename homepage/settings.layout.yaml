@@ -1,0 +1,13 @@
+# Merge into Homepage config/settings.yaml
+layout:
+  Infra:
+    style: row
+    columns: 3
+  Downloads:
+    style: row
+    columns: 1
+    fullWidth: true
+  Games:
+    style: row
+    columns: 1
+    fullWidth: true

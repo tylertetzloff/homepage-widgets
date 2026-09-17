@@ -33,7 +33,13 @@ cp ugreen.auth.example ugreen.auth
 
 Merge the `ugreen-api` service from [`../compose.fragment.yml`](../compose.fragment.yml). Set `UGOS_URL` to your NAS web UI.
 
-Homepage snippet: [`../../homepage/services.ugreen.yaml`](../../homepage/services.ugreen.yaml).
+## Homepage
+
+Follow [Add these widgets to Homepage](../../homepage/README.md). Paste [`../../homepage/services.ugreen.yaml`](../../homepage/services.ugreen.yaml) under an `Infra` group in `config/services.yaml`.
+
+`widget.url` is fetched by the Homepage **container**, so `http://ugreen-api:9199/` only works when they share a Docker network.
+
+Optional: copy [`../../homepage/custom.js`](../../homepage/custom.js) into Homepage `custom.js` so the docker-status pill shows HEALTHY / WARNING / CRITICAL. Restart Homepage after copying.
 
 ## Health thresholds
 
@@ -42,5 +48,3 @@ Homepage snippet: [`../../homepage/services.ugreen.yaml`](../../homepage/service
 | Healthy | disks status 1, CPU < 70 °C, hottest disk < 45 °C |
 | Warning | CPU ≥ 70 or disk ≥ 45 |
 | Critical | disk not status 1, CPU ≥ 85, or disk ≥ 55 |
-
-Optional: copy [`../../homepage/custom.js`](../../homepage/custom.js) into Homepage `custom.js` so the docker-status pill shows HEALTHY / WARNING / CRITICAL.

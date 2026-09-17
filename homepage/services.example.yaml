@@ -1,0 +1,84 @@
+# Complete example. Copy into Homepage config/services.yaml and
+# replace HOMEPAGE_HOST / NAS_HOST / GAME_HOST. Do not commit real hosts.
+
+- Infra:
+    - uGreen:
+        id: ugreen
+        icon: mdi-nas
+        href: http://NAS_HOST:9999
+        description: NAS · disks · temps
+        server: my-docker
+        container: ugreen-api
+        widget:
+          type: customapi
+          url: http://ugreen-api:9199/
+          refreshInterval: 60000
+          mappings:
+            - field: count
+              label: disks
+            - field: cpu
+              label: CPU Temp
+              format: number
+              suffix: "°C"
+            - field: disk_temps
+              label: Disk Temp
+
+    - Mounts:
+        id: mounts
+        icon: mdi-harddisk
+        href: http://NAS_HOST
+        description: NAS mount usage
+        server: my-docker
+        container: ddns-status
+        widget:
+          type: customapi
+          url: http://ddns-status:8791/mounts.json
+          refreshInterval: 30000
+          mappings:
+            - field: used
+              label: used
+            - field: free
+              label: free
+            - field: size
+              label: size
+
+    - Gluetun:
+        id: gluetun
+        icon: gluetun.png
+        href: http://HOMEPAGE_HOST:8000
+        description: VPN exit
+        server: my-docker
+        container: gluetun-status
+        widget:
+          type: customapi
+          url: http://gluetun-status:8792/
+          refreshInterval: 30000
+          mappings:
+            - field: country
+              label: country
+            - field: public_ip
+              label: IP
+            - field: port_forwarded
+              label: fwd
+
+- Downloads:
+    - qBittorrent:
+        icon: qbittorrent.png
+        href: http://HOMEPAGE_HOST:8080
+        widget:
+          type: iframe
+          name: qbit
+          src: http://HOMEPAGE_HOST:8788/?embed=1
+          classes: h-96 lg:h-[36rem]
+          allowScrolling: yes
+
+- Games:
+    - Crafty:
+        icon: https://docs.craftycontrol.com/img/favicon.ico
+        href: https://HOMEPAGE_HOST:8443
+        widget:
+          type: iframe
+          name: crafty
+          src: http://HOMEPAGE_HOST:8789/?embed=1
+          classes: h-80 lg:h-[28rem]
+          allowScrolling: yes
