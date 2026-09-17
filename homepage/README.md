@@ -44,6 +44,8 @@ Copy from the snippets in this folder:
 | DDNS | [services.ddns.yaml](services.ddns.yaml) |
 | Gluetun VPN | [services.gluetun.yaml](services.gluetun.yaml) |
 | Crafty / Minecraft | [services.crafty.yaml](services.crafty.yaml) |
+| CUE split | [services.cue.yaml](services.cue.yaml) |
+| MakeMKV | [services.mkv.yaml](services.mkv.yaml) |
 
 A full file with every card: [services.example.yaml](services.example.yaml).
 

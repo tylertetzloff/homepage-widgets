@@ -34,6 +34,8 @@ Sanitized mockups — placeholder names, [RFC 5737](https://www.rfc-editor.org/r
 | **DDNS** | Homepage `customapi` | same `ddns-status` | Homepage → `ddns-status:8791/ddns.json` |
 | **Gluetun** | Homepage `customapi` | `gluetun-status` | Homepage → `gluetun-status:8792/` |
 | **Crafty / Minecraft** | iframe widget | `crafty-widget` | widget origin only (`/api/summary` → Crafty from the sidecar) |
+| **CUE split** | iframe widget | `cue-widget` (systemd, host tools) | widget origin only (`/api/*` → `shnsplit` / `cuetag`) |
+| **MakeMKV** | iframe widget | `mkv-widget` (systemd, host tools) | widget origin only (`/api/*` → `makemkvcon`) |
 
 Status pills for uGreen / Mounts / Gluetun are rewritten by [`homepage/custom.js`](homepage/custom.js), which only calls Homepage's own `/api/services/proxy`.
 
@@ -45,6 +47,8 @@ Status pills for uGreen / Mounts / Gluetun are rewritten by [`homepage/custom.js
 4. [Mounts + DDNS](sidecars/ddns-status/README.md)
 5. [Gluetun VPN](sidecars/gluetun-status/README.md)
 6. [Crafty Minecraft](sidecars/crafty-widget/README.md)
+7. [CUE split](sidecars/cue-widget/README.md)
+8. [MakeMKV](sidecars/mkv-widget/README.md)
 
 Compose fragments to merge into an existing stack: [`sidecars/compose.fragment.yml`](sidecars/compose.fragment.yml).
 
