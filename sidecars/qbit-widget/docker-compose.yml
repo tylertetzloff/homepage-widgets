@@ -1,0 +1,12 @@
+# Standalone example. Prefer merging into the stack that already
+# runs Homepage + qBittorrent so they share a Docker network.
+services:
+  qbit-widget:
+    build: .
+    container_name: qbit-widget
+    restart: unless-stopped
+    environment:
+      # Docker DNS name of the qBittorrent container, not a LAN IP.
+      QBIT_UPSTREAM: http://qbittorrent:8080
+    ports:
+      - "8788:80"

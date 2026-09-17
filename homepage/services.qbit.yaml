@@ -1,0 +1,11 @@
+# Merge into Homepage services.yaml. iframe talks to the qbit-widget
+# container only — never put your qBittorrent LAN IP in the browser.
+    - qBittorrent:
+        icon: qbittorrent.png
+        href: http://HOMEPAGE_HOST:8080
+        widget:
+          type: iframe
+          name: qbit
+          src: http://HOMEPAGE_HOST:8788/?embed=1
+          classes: h-96 lg:h-[36rem]
+          allowScrolling: yes

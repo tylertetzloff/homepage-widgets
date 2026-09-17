@@ -1,0 +1,38 @@
+# Merge into Homepage services.yaml under the Infra group.
+    - uGreen:
+        id: ugreen
+        icon: mdi-nas
+        href: http://NAS_HOST:9999
+        description: NAS · disks · temps
+        server: my-docker
+        container: ugreen-api
+        widget:
+          type: customapi
+          url: http://ugreen-api:9199/
+          refreshInterval: 60000
+          mappings:
+            - field: count
+              label: disks
+            - field: cpu
+              label: CPU Temp
+              format: number
+              suffix: "°C"
+            - field: disk_temps
+              label: Disk Temp
+          highlight:
+            CPU Temp:
+              numeric:
+                - level: danger
+                  when: gte
+                  value: 85
+                - level: warn
+                  when: gte
+                  value: 70
+            Disk Temp:
+              string:
+                - level: danger
+                  when: regex
+                  value: "(5[5-9]|[6-9][0-9])°C"
+                - level: warn
+                  when: regex
+                  value: "(4[5-9]|5[0-4])°C"

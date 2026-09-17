@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>qBittorrent</title>
+  <link rel="stylesheet" href="widget.css" />
+</head>
+<body>
+  <div class="page" id="page">
+    <h1 class="title" id="pageTitle">qBittorrent</h1>
+    <div class="card">
+      <div class="head">
+        <svg class="mark" viewBox="0 0 32 32" aria-hidden="true">
+          <rect width="32" height="32" rx="6" fill="#2f6fed"/>
+          <path d="M9 16.5c0-4 3-7.2 7-7.2 2.6 0 4.8 1.2 6 3.1L19.6 14c-.6-1-1.7-1.7-3.6-1.7-2.4 0-4 1.8-4 4.2s1.6 4.2 4 4.2c1.9 0 3-.8 3.6-1.8l2.4 1.6c-1.2 1.9-3.4 3.2-6 3.2-4 0-7-3.2-7-7.2Z" fill="#fff"/>
+        </svg>
+        <div>
+          <div class="name">qBittorrent</div>
+          <div class="sub" id="speeds"></div>
+        </div>
+      </div>
+      <div class="stats" id="stats"></div>
+      <div class="list" id="list"></div>
+      <div class="xfer" id="xfer"></div>
+    </div>
+  </div>
+  <div id="toast" class="toast" hidden></div>
+  <div id="modal" hidden></div>
+  <script src="app.js"></script>
+</body>
+</html>

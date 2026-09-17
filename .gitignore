@@ -1,0 +1,12 @@
+.env
+*.env
+.env.*
+!.env.example
+ugreen.auth
+ugreen.token
+ugreen.token_uid
+*.auth
+*.token
+__pycache__/
+*.pyc
+.venv/

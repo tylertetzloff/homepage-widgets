@@ -1,0 +1,19 @@
+# Merge into Homepage services.yaml under the Infra group.
+    - Mounts:
+        id: mounts
+        icon: mdi-harddisk
+        href: http://NAS_HOST
+        description: NAS mount usage
+        server: my-docker
+        container: ddns-status
+        widget:
+          type: customapi
+          url: http://ddns-status:8791/mounts.json
+          refreshInterval: 30000
+          mappings:
+            - field: used
+              label: used
+            - field: free
+              label: free
+            - field: size
+              label: size

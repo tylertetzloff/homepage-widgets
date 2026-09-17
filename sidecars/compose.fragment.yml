@@ -1,0 +1,30 @@
+# Snippets only — merge into the stack that already runs Homepage.
+# Keep these on the same Docker network as Homepage (and qBittorrent).
+# Do not commit ugreen.auth, ugreen.token, or a filled-in .env.
+
+  ugreen-api:
+    image: python:3.12-slim
+    container_name: ugreen-api
+    restart: unless-stopped
+    working_dir: /app
+    command: bash -c "pip install -q cryptography && python -u /app/server.py"
+    environment:
+      UGOS_URL: http://NAS_HOST:9999
+      PORT: "9199"
+      BIND: 0.0.0.0
+    volumes:
+      - ./sidecars/ugreen-api/ugreen-api.py:/app/server.py:ro
+      - ./sidecars/ugreen-api/ugreen.auth:/app/ugreen.auth:ro
+
+  ddns-status:
+    image: python:3-alpine
+    container_name: ddns-status
+    restart: unless-stopped
+    environment:
+      MOUNT_PATH: /mnt/storage
+      DDNS_HOST_COUNT: "1"
+      SKIP_IPIFY: "0"
+    command: python -u /app.py
+    volumes:
+      - ./sidecars/ddns-status/ddns-status-http.py:/app.py:ro
+      - /mnt/storage:/mnt/storage:ro
