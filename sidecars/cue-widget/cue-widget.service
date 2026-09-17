@@ -1,0 +1,15 @@
+[Unit]
+Description=Homepage CUE split widget
+After=network.target
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/homepage-widgets/cue.env
+WorkingDirectory=/opt/homepage-widgets/sidecars/cue-widget
+ExecStart=/usr/bin/python3 /opt/homepage-widgets/sidecars/cue-widget/cue-widget.py
+Restart=on-failure
+RestartSec=3
+# Set User= in a drop-in to the account that owns the music tree.
+
+[Install]
+WantedBy=multi-user.target

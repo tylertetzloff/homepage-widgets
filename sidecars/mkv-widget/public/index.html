@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MakeMKV</title>
+  <link rel="stylesheet" href="widget.css" />
+</head>
+<body>
+  <div class="page" id="page">
+    <h1 class="title" id="pageTitle">MakeMKV</h1>
+    <div class="card">
+      <div class="head">
+        <svg class="mark" viewBox="0 0 32 32" aria-hidden="true">
+          <rect width="32" height="32" rx="6" fill="#2a3a4e"/>
+          <rect x="6" y="8" width="20" height="16" rx="2" fill="none" stroke="#dce4ee" stroke-width="1.6"/>
+          <path d="M12 12v8l8-4-8-4Z" fill="#dce4ee"/>
+        </svg>
+        <div>
+          <div class="name">makemkvcon</div>
+          <div class="sub">ISO · BDMV · disc → MKV</div>
+        </div>
+      </div>
+      <div class="stats" id="stats"></div>
+      <div class="stack" id="files"></div>
+      <div class="list" id="titles"></div>
+      <div class="bar" id="bar" hidden><span style="width:0%"></span></div>
+      <p class="log" id="log"></p>
+      <p class="err" id="err" hidden></p>
+      <div class="acts">
+        <button class="btn" id="scan" type="button">Scan titles</button>
+        <button class="btn primary" id="rip" type="button">Rip</button>
+      </div>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

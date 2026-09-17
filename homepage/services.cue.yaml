@@ -1,0 +1,11 @@
+# Merge under a Tools (or similar) group in services.yaml.
+    - CUE split:
+        icon: mdi-music-box
+        href: http://HOMEPAGE_HOST:8793/
+        description: CUE + image FLAC → tracks
+        widget:
+          type: iframe
+          name: cue
+          src: http://HOMEPAGE_HOST:8793/?embed=1
+          classes: h-96 lg:h-[28rem]
+          allowScrolling: yes

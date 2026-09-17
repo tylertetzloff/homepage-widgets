@@ -1,0 +1,11 @@
+# Merge under a Tools (or similar) group in services.yaml.
+    - MakeMKV:
+        icon: mdi-disc
+        href: http://HOMEPAGE_HOST:8794/
+        description: ISO · BDMV · disc → MKV
+        widget:
+          type: iframe
+          name: mkv
+          src: http://HOMEPAGE_HOST:8794/?embed=1
+          classes: h-96 lg:h-[28rem]
+          allowScrolling: yes

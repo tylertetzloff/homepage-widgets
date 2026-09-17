@@ -1,0 +1,15 @@
+[Unit]
+Description=Homepage MakeMKV widget
+After=network.target
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/homepage-widgets/mkv.env
+WorkingDirectory=/opt/homepage-widgets/sidecars/mkv-widget
+ExecStart=/usr/bin/python3 /opt/homepage-widgets/sidecars/mkv-widget/mkv-widget.py
+Restart=on-failure
+RestartSec=3
+# Set User= in a drop-in to the account that owns the movie tree.
+
+[Install]
+WantedBy=multi-user.target
