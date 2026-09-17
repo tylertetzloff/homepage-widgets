@@ -41,6 +41,7 @@ Copy from the snippets in this folder:
 | qBittorrent iframe | [services.qbit.yaml](services.qbit.yaml) |
 | uGreen temps | [services.ugreen.yaml](services.ugreen.yaml) |
 | Mounts | [services.mounts.yaml](services.mounts.yaml) |
+| DDNS | [services.ddns.yaml](services.ddns.yaml) |
 | Gluetun VPN | [services.gluetun.yaml](services.gluetun.yaml) |
 | Crafty / Minecraft | [services.crafty.yaml](services.crafty.yaml) |
 

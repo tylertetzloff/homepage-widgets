@@ -6,6 +6,24 @@ Custom [Homepage](https://gethomepage.dev) cards and iframe widgets for a home-l
 
 Nothing secret belongs here. NAS username/password stay in `ugreen.auth` on the server (gitignored). Crafty API tokens and Gluetun keys stay in gitignored files too. Do not commit LAN IPs, cookies, instance names, or tokens.
 
+## Preview
+
+Sanitized mockups — placeholder names, [RFC 5737](https://www.rfc-editor.org/rfc/rfc5737) IPs, distro ISOs. Not a live dashboard.
+
+![uGreen NAS temps](docs/screenshots/ugreen.png)
+
+![Mounts](docs/screenshots/mounts.png)
+
+![DDNS](docs/screenshots/ddns.png)
+
+![Gluetun VPN](docs/screenshots/gluetun.png)
+
+![Crafty Controller](docs/screenshots/crafty.png)
+
+![Minecraft](docs/screenshots/minecraft.png)
+
+![qBittorrent iframe](docs/screenshots/qbittorrent-iframe.png)
+
 ## Cards
 
 | Card | Kind | Process | Browser talks to |

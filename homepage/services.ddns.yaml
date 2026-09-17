@@ -1,0 +1,16 @@
+# Merge under an Infra (or similar) group in services.yaml.
+    - DDNS:
+        icon: mdi-web
+        href: https://example.com
+        description: Dynamic DNS · 2 names
+        server: my-docker
+        container: ddns-status
+        widget:
+          type: customapi
+          url: http://ddns-status:8791/ddns.json
+          refreshInterval: 60000
+          mappings:
+            - field: hosts
+              label: hosts
+            - field: wan_ip
+              label: WAN IP
